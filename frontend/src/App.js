@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "bulma/css/bulma.min.css";
-import { BASE_URL } from "/utils";
+import { BASE_URL } from "./utils";
 
 const NotesApp = () => {
   const [notes, setNotes] = useState([]);

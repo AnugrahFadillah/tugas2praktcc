@@ -20,7 +20,7 @@ const NotesApp = () => {
 
   const fetchNotes = async () => {
     try {
-      const response = await axios.get("http://localhost:5001/notes");
+      const response = await axios.get(`${BASE_URL}/notes`);
       setNotes(response.data);
     } catch (error) {
       console.error("Error fetching notes:", error);
@@ -36,10 +36,10 @@ const NotesApp = () => {
 
     try {
       if (editMode) {
-        await axios.put(`http://localhost:5001/notes/${editId}`, { name, title, content });
+        await axios.put(`${BASE_URL}/notes/${editId}`, { name, title, content });
         setMessage("Note updated successfully!");
       } else {
-        await axios.post("http://localhost:5001/notes", { name, title, content });
+        await axios.post(`${BASE_URL}/notes`, { name, title, content });
         setMessage("Note added successfully!");
       }
       setName("");
@@ -59,7 +59,7 @@ const NotesApp = () => {
 
   const deleteNote = async (id) => {
     try {
-      await axios.delete(`http://localhost:5001/notes/${id}`);
+      await axios.delete(`${BASE_URL}/notes/${id}`);
       fetchNotes();
     } catch (error) {
       console.error("Error deleting note:", error);
